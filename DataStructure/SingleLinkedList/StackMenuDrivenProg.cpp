@@ -1,0 +1,117 @@
+//Write a C program for followinf menu
+#include<stdio.h>
+#include<process.h>
+
+int push(int *stack,int capacity,int *topOfStack,int newValue)
+{
+	int data;
+    if(*topOfStack==capacity-1)
+    return 0;
+
+	printf("Enter any number to push your number in Stack:");
+	scanf("%d",&data);
+    (*topOfStack)++;
+    stack[*topOfStack]=newValue;
+    return 1;
+
+}
+
+int pop(int *stack,int *topOfStack,int *poppedValue)
+{
+    if(*topOfStack==-1)
+    return 0;
+	
+	//printf("%d is popped in Stack:"stack[*topOfStack]);
+    *poppedValue=stack[*topOfStack];
+    (*topOfStack)--;
+    return 1;
+}
+
+//peep as view
+void view(int *stack,int topOfStack)
+{
+    int i;
+    if(topOfStack==-1)
+    printf("\n Stack is empty!");
+
+    for(i=0;i<=topOfStack;i++)
+    {
+        printf("%d",stack[i]);
+        if(i<topOfStack)
+        printf(">");
+    }
+}
+
+
+int main()
+{
+	int stack[5], topOfStack=-1;
+	int  newValue;
+	int choice, i;
+	do
+	{
+		//Menu
+ 		printf("\n1. Push to stack 1\n2. Push to stack 2");
+		printf("\n3. Pop from stack 1\n4. Pop from stack 2");
+		printf("\n5. Display stack 1\n6. Display stack 2");
+		printf("\n7. Exit.");
+		printf("\nPlease enter your desired choice:");
+		scanf("%d",&choice);
+		
+		switch(choice)
+		{
+			case 1://int push(int *stack, int capacity ,int *topOfStack, int newValue); 
+			if(topOfStack==5-1)
+			{
+				printf("stack is fail");
+				break;
+			}
+			printf("enter no:");
+			scanf("%d",&newValue);
+			topOfStack=topOfStack+1;
+			stack[topOfStack]=newValue;
+			printf("%d is added successfully  in Stack.",newValue);
+				   break;
+				   
+			case 2:int push2(int *stack, int capacity ,int *topOfStack, int newValue); 
+				  break;
+			
+			case 3://int pop();
+			if(topOfStack==-1)
+			{
+				printf("Stack is Underflow");
+				break;
+			}
+				printf("%d is POPPED successfully.",stack[topOfStack]);
+				topOfStack=topOfStack-1;
+			       break;
+			
+			case 4:int pop2();
+			break;
+			
+			case 5://void view(int *stack, int topOfStack);
+			if(topOfStack>=0)
+			{
+				printf("Stack elements:\n");
+				for(i=topOfStack; i>=0; i--)
+				{
+					printf("%d\n", stack[i]);
+				}
+				break;
+			}
+			printf("Stack is empty!!");
+			       break;
+			
+			case 6:void view2(int *stack, int topOfStack);
+			       break;
+			
+			case 7://code for exit
+				return 0;
+			default:
+			printf("\nSorry! you have entered an invalid choice.");
+		}
+		printf("\n");
+		system("pause");
+	}while(1);
+	
+}
